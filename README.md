@@ -12,5 +12,5 @@ I am trying to build and maintain my website consistent with the "DevOps" method
 5. Upload to dockerhub on push to master.
 
 ## Running from DockerHub
-    docker pull jsbruner/website:latest
-    docker run -it -p 8000:8000 jsbruner/website:latest
+    docker pull jsbruner/www:latest
+    docker run -it -p 8000:8000 jsbruner/www:latest
