@@ -1,4 +1,7 @@
 # website
+[![Docker Automated build](https://img.shields.io/docker/automated/jsbruner/www.svg)](https://hub.docker.com/r/jsbruner/www/)
+[![Docker Build Status](https://img.shields.io/docker/build/jsbruner/www.svg)](https://hub.docker.com/r/jsbruner/www/)
+
 Josiah's personal website.
 
 I am trying to build and maintain my website consistent with the "DevOps" methodology.
