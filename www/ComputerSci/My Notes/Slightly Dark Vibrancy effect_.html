@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.3 (451151)"/><meta name="altitude" content="232"/><meta name="author" content="josiahbruner@mail.com"/><meta name="created" content="2014-11-26 03:57:46 +0000"/><meta name="latitude" content="42.26728568601423"/><meta name="longitude" content="-83.56098388223235"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2014-12-07 19:25:34 +0000"/><title>Slightly Dark Vibrancy effect?</title></head><body>
+<div>Somehow, Finder uses a vibrancy effect other than  <span style="font: 11.0px Menlo; font-variant-ligatures: no-common-ligatures; color: #00afca">NSVisualEffectMaterialLight </span>and <span style="font: 11.0px Menlo; font-variant-ligatures: no-common-ligatures; color: #00afca">NSVisualEffectMaterialDark</span>. However, I’m not sure how to reproduce it.</div>
+<div><br/></div>
+<div>It’s not an overlay, that's for sure, there’s some kind of blend going on.</div>
+<div><br/></div>
+<div>Tweaking the two values from  <span style="font: 11.0px Menlo; font-variant-ligatures: no-common-ligatures; color: #00afca">NSVisualEffectView</span>’s <span style="font: 11.0px Menlo; font-variant-ligatures: no-common-ligatures; color: #00afca">appearance </span>and <span style="font: 11.0px Menlo; font-variant-ligatures: no-common-ligatures; color: #00afca">material </span>properties don’t seem to do anything other than style it to the two extremes.</div>
+<div><br/></div>
+<div>It’s possible the solution is an within-window blending mode, instead of behind-window, but that seems unlikely. Finder’s selection background seems to be a behind-window, though I suppose within-window blend mode on top of the behind-window would produce that. Maybe?</div>
+<div><br/></div>
+<div>I asked on StackOverflow in case there is a super-obvious solution that Apple’s docs don’t mention.</div>
+<div><br/></div>
+<div>Day later, still no comments or answers, which means it probably isn’t trivial. Guess inspection of Finder itself will have to be done.</div>
+</body></html>

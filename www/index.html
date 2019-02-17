@@ -1,9 +1,207 @@
-<html>
-  <head>
+<link rel="stylesheet" type="text/css" href="josiahMinimal.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="Fonts/stylesheet.css" media="screen" />
 
-  </head>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
 
-  <body>
-    Hello. I'm a cool website.
-  </body>
-</html>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+  * {
+   max-width: 480px;
+   min-width: 320px;
+  }
+}
+
+.spacer {
+  height: 50px;
+  width: 0px;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+.vertical-group {
+  display: inline-block;
+  margin: auto;
+  height: 0px;
+}
+
+#group1 {
+  width: 60%;
+  margin-left: 20%;
+}
+
+#group2 {
+  width: calc(40% - 10px);
+  margin-top: -125px;*/
+}
+
+.item {
+  height: 200px;
+  width: 100%;
+  margin: auto;
+  background-size: auto 200px;
+  text-align: center;
+  line-height: 200px;
+  font-size: 2em;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.vert-item {
+  height: 450px;
+  width: 100%;
+  margin: auto;
+  background-size: auto 200px;
+  text-align: center;
+  line-height: 450px;
+  font-size: 2em;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in;
+}
+
+#blog {
+  background-color: #2980b9;
+}
+
+.blue {
+  background-image: url("blueCircle.svg");
+}
+
+#resume {
+  background-color: #8e44ad;
+}
+
+#profile {
+  background-color: #7db6b7;
+}
+
+.green {
+  background-image: url("greenCircle.svg");
+}
+
+.purple {
+  background-image: url("purpleCircle.svg");
+}
+
+.font {
+  color: black;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0);
+  height: 100%;
+}
+
+.font,
+.overlay {
+  transition: color .2s ease-out, background-color .2s ease-in;
+}
+
+.item:hover,
+.vert-item:hover {
+  box-shadow: 0px 2px 5px #BDC3C7;
+}
+
+.item:hover > .overlay,
+.vert-item:hover > .overlay,
+.item:hover .font {
+  background-color: transparent;
+  color: white !important;
+}
+
+a > span {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+
+    /* edit: added z-index */
+    z-index: 1;
+
+    background-image: url('empty.gif');
+
+}
+
+#circle {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0 0;
+  height: 100%;
+  width: 100%;
+  transition: .3s ease-in;
+}
+
+.item:hover #circle,
+.vert-item:hover #circle {
+  background-size: 1500px 1500px;
+}
+
+#blog, #resume, #profile {
+  position: relative;
+}
+
+</style>
+
+<body>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+<div id="mainheader">
+<div id="topbox"> J </div>
+<div id="otherbox"> Josiah Bruner. </div>
+</div>
+<div class="container">
+<h1> About Me </h1>
+  Security engineer at <div class="summary"> Harman International<div class="sub"> (a Samsung Company)</div></div>, working on embedded product security.
+
+My primary interests are: <br>
+    <ul>
+      <li>Automotive security and privacy, in a general sense.</li>
+      <li>DevSecOps, i.e. making it easy for developers to "do the right thing".</li>
+      <li>Applied cryptography, in particular as it relates to networks (OTA updates, TLS applications, etc.)</li>
+      <li>Economics, specifically at it relates to crime and crime prevention. </li>
+      <li>Statistics/risk assessment, as it relates to crime and crime prevention.</li>
+    </ul>
+  I graduated with a bachelors of science and engineering in computer science from <div class="summary"> The University of Michigan<div class="sub"> (Ann Arbor)</div></div> in 2018. If you're interested in the courses I took, and what I thought of them, see <a href="courses"> courses</a>.
+
+  <br><br>
+  During my undergraduate years I interned at <div class="summary">Lear Corporation<div class="sub"> (Global automotive computer security)</div></div> as a security engineering intern. I also worked at <div class="summary">Harman International<div class="sub"> (Navigation for automotive)</div></div> as a software engineering intern.
+
+
+<h1> Readings </h1>
+<h2> My Stuff </h2>
+<a href="http://josiahbruner.com/resume/Resume.pdf"> My Resume </a> <br>
+<a href="http://blog.josiahbruner.com/"> My Blog</a> <br>
+<a href="compSec/NotesOnComputerSecurity.html"> My Summary Notes for an Undergrad Computer Security Course (EECS 388 at The University of Michigan) </a> <br>
+<a href="readings/omscs.html"> My SOP for Georgia Tech's OMSCS program. (I was accepted) </a> <br>
+
+<h2> Papers I Recommend </h2>
+<h3> Computer Security </h3>
+<a href="http://illmatics.com/car_hacking.pdf"> "Adventures in Automotive Networks and Control Units" - Dr. Charlie Miller & Chris Valasek </a> <br>
+<a href="http://illmatics.com/car_hacking_poories.pdf"> "Car Hacking: For Poories" - Dr. Charlie Miller & Chris Valasek </a> <br>
+<a href="http://illmatics.com/remote%20attack%20surfaces.pdf"> "A Survey of Remote Automotive Attack Surfaces" - Dr. Charlie Miller & Chris Valasek </a> <br>
+<a href="http://illmatics.com/Remote%20Car%20Hacking.pdf"> "Remote Exploitation of an Unaltered Passenger Vehicle" - Dr. Charlie Miller & Chris Valasek </a> <br>
+<a href="http://illmatics.com/can%20message%20injection.pdf"> "CAN Message Injection" - Dr. Charlie Miller & Chris Valasek </a> <br>
+<a href="http://www.autosec.org/pubs/cars-oakland2010.pdf"> "Experimental Security Analysis of a Modern Automobile" - Koscher et al. </a> <br>
+<a href="http://static.usenix.org/events/sec11/tech/full_papers/Checkoway.pdf"> "Comprehensive Experimental Analyses of Automotive Attack Surfaces" - Koscher & Checkoway et al. </a> <br>
+<a href="https://documents.trendmicro.com/assets/A-Vulnerability-in-Modern-Automotive-Standards-and-How-We-Exploited-It.pdf"> "A Vulnerability in Modern Automotive Standards and How We Exploited It" - Trend Micro </a> <br>
+<h3> Software Engineering </h3>
+<a href="http://josiahbruner.com/readings/thp.html"> "The Humble Programmer" - Edsger W. Dijkstra  </a> <br>
+<h3> Economics </h3>
+<a href="https://arxiv.org/pdf/1708.04866.pdf"> "Economic Factors of Vulnerability Trade and Exploitation" - Luca Allodi </a> <br>
+<h3> Other </h3>
+<a href="https://web.eecs.umich.edu/~weimerw/consciousness-time/consciousness-time.pdf"> "Consciousness and Time as Research Problem" - Westley Weimer</a> <br>
+<!--<h1> Projects </h1>
+
+A full list of projects (academic work + work projects + personal work) can be found here: FIXME <br><br>
+
+Some highlights are below:-->
+
+</div>
+</body>

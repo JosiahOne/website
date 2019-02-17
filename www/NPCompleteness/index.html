@@ -1,0 +1,99 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #mynetwork {
+            width: 100%;
+            height: 800px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+
+
+<h1> NP-Complete Problems </h1>
+This page shows many NP-Complete problems and links them by reductions from one problem to another.
+They are (more or less) grouped how related they are. Gray nodes are completely separate problems.
+<div id="mynetwork"></div>
+
+<script type="text/javascript">
+    // create an array with nodes
+    var nodes = new vis.DataSet([
+        {id: 'SAT',                      label: 'SAT',                      color: {background: 'red',       border: 'black'}},
+        {id: 'WITNESSEXISTENCE',         label: 'WITNESSEXISTENCE',         color: {background: 'lightgray', border: 'black'}},
+        {id: '3-SAT',                    label: '3-SAT',                    color: {background: 'red',       border: 'black'}},
+        {id: '4-SAT',                    label: '4-SAT',                    color: {background: 'red',       border: 'black'}},
+        {id: 'k-SAT',                    label: 'k-SAT',                    color: {background: 'red',       border: 'black'}},
+        {id: 'NAE-4-SAT',                label: 'NAE-4-SAT',                color: {background: 'darkred',   border: 'black'},   font: {color: 'white'}},
+        {id: 'NAE-k-SAT',                label: 'NAE-k-SAT',                color: {background: 'darkred',   border: 'black'},   font: {color: 'white'}},
+        {id: 'NAE-3-SAT',                label: 'NAE-3-SAT',                color: {background: 'darkred',   border: 'black'},   font: {color: 'white'}},
+        {id: 'MAXCUT',                   label: 'MAXCUT',                   color: {background: 'green',     border: 'black'},   font: {color: 'white'}},
+        {id: 'MAX-st-CUT',               label: 'MAX-st-CUT',               color: {background: 'green',     border: 'black'},   font: {color: 'white'}},
+        {id: 'GRAPH-3-COLORING',         label: 'GRAPH-3-COLORING',         color: {background: 'blue',      border: 'black'},   font: {color: 'white'}},
+        {id: 'PLANAR-GRAPH-3-COLORING',  label: 'PLANAR-GRAPH-3-COLORING',  color: {background: 'blue',      border: 'black'},   font: {color: 'white'}},
+        {id: 'GRAPH-4-COLORING',         label: 'GRAPH-4-COLORING',         color: {background: 'blue',      border: 'black'},   font: {color: 'white'}},
+        {id: 'GRAPH-k-COLORING',         label: 'GRAPH-k-COLORING',         color: {background: 'blue',      border: 'black'},   font: {color: 'white'}},
+        {id: 'CLIQUE',                   label: 'CLIQUE',                   color: {background: 'lightgray', border: 'black'}},
+        {id: 'INDEPENDENTSET',           label: 'INDEPENDENTSET',           color: {background: 'lightgray', border: 'black'}},
+        {id: 'VERTEXCOVER',              label: 'VERTEXCOVER',              color: {background: 'lightgray', border: 'black'}},
+        {id: 'DIRECTED-HAMILTONIANPATH', label: 'DIRECTED-HAMILTONIANPATH', color: {background: 'purple',    border: 'black'},   font: {color: 'white'}},
+        {id: 'HAMILTONIANPATH',          label: 'HAMILTONIANPATH',          color: {background: 'purple',    border: 'black'},   font: {color: 'white'}},
+        {id: 'TSP',                      label: 'TSP',                      color: {background: 'lightgray', border: 'black'}},
+        {id: 'SUBSETSUM',                label: 'SUBSETSUM',                color: {background: 'lightgray', border: 'black'}},
+        {id: 'INTEGERPARTIONING',        label: 'INTEGERPARTIONING',        color: {background: 'lightgray', border: 'black'}},
+
+
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: 'SAT', to: '3-SAT', arrows:'to', id: 'SAT_to_3-SAT'},
+        {from: '3-SAT', to: '4-SAT', arrows:'to'},
+        {from: '4-SAT', to: 'k-SAT', arrows:'to'},
+        {from: '3-SAT', to: 'NAE-4-SAT', arrows:'to'},
+        {from: 'NAE-4-SAT', to: 'NAE-k-SAT', arrows:'to'},
+        {from: 'NAE-4-SAT', to: 'NAE-3-SAT', arrows:'to'},
+        {from: 'NAE-3-SAT', to: 'MAXCUT', arrows:'to'},
+        {from: 'MAXCUT', to: 'MAX-st-CUT', arrows:'to'},
+        {from: 'NAE-3-SAT', to: 'GRAPH-3-COLORING', arrows:'to'},
+        {from: 'GRAPH-3-COLORING', to: 'PLANAR-GRAPH-3-COLORING', arrows:'to'},
+        {from: 'GRAPH-3-COLORING', to: 'GRAPH-4-COLORING', arrows:'to'},
+        {from: 'GRAPH-4-COLORING', to: 'GRAPH-k-COLORING', arrows:'to'},
+        {from: '3-SAT', to: 'CLIQUE', arrows:'to'},
+        {from: 'CLIQUE', to: 'INDEPENDENTSET', arrows:'to'},
+        {from: 'INDEPENDENTSET', to: 'VERTEXCOVER', arrows:'to'},
+        {from: '3-SAT', to: 'DIRECTED-HAMILTONIANPATH', arrows:'to'},
+        {from: 'DIRECTED-HAMILTONIANPATH', to: 'HAMILTONIANPATH', arrows:'to'},
+        {from: 'HAMILTONIANPATH', to: 'TSP', arrows:'to'},
+        {from: '3-SAT', to: 'SUBSETSUM', arrows:'to'},
+        {from: 'SUBSETSUM', to: 'INTEGERPARTIONING', arrows:'to'},
+
+
+    ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {};
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+
+    network.on("doubleClick", function(params) {
+      if (params.edges[0] == "SAT_to_3-SAT")
+      {
+        window.location = "SAT_to_3-SAT.html"
+      }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<link rel="stylesheet" type="text/css" href="../josiahMinimal.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../Fonts/stylesheet.css" media="screen" />
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+  * {
+   max-width: 480px;
+   min-width: 320px;
+  }
+}
+
+.spacer {
+  height: 50px;
+  width: 0px;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+.vertical-group {
+  display: inline-block;
+  margin: auto;
+  height: 0px;
+}
+
+#group1 {
+  width: 60%;
+  margin-left: 20%;
+}
+
+#group2 {
+  width: calc(40% - 10px);
+  margin-top: -125px;*/
+}
+
+.item {
+  height: 200px;
+  width: 100%;
+  margin: auto;
+  background-size: auto 200px;
+  text-align: center;
+  line-height: 200px;
+  font-size: 2em;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.vert-item {
+  height: 450px;
+  width: 100%;
+  margin: auto;
+  background-size: auto 200px;
+  text-align: center;
+  line-height: 450px;
+  font-size: 2em;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in;
+}
+
+#blog {
+  background-color: #2980b9;
+}
+
+.blue {
+  background-image: url("blueCircle.svg");
+}
+
+#resume {
+  background-color: #8e44ad;
+}
+
+#profile {
+  background-color: #7db6b7;
+}
+
+.green {
+  background-image: url("greenCircle.svg");
+}
+
+.purple {
+  background-image: url("purpleCircle.svg");
+}
+
+.font {
+  color: black;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0);
+  height: 100%;
+}
+
+.font,
+.overlay {
+  transition: color .2s ease-out, background-color .2s ease-in;
+}
+
+.item:hover,
+.vert-item:hover {
+  box-shadow: 0px 2px 5px #BDC3C7;
+}
+
+.item:hover > .overlay,
+.vert-item:hover > .overlay,
+.item:hover .font {
+  background-color: transparent;
+  color: white !important;
+}
+
+a > span {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+
+    /* edit: added z-index */
+    z-index: 1;
+
+    background-image: url('empty.gif');
+
+}
+
+#circle {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0 0;
+  height: 100%;
+  width: 100%;
+  transition: .3s ease-in;
+}
+
+.item:hover #circle,
+.vert-item:hover #circle {
+  background-size: 1500px 1500px;
+}
+
+#blog, #resume, #profile {
+  position: relative;
+}
+
+</style>
+
+<body>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+<div id="mainheader">
+<div id="topbox"> J </div>
+<div id="otherbox"> Josiah Bruner. </div>
+</div>
+<div class="container">
+<h1> Courses </h1>
+I have taken a lot of different courses (mostly in the EECS department), Therefore,
+I thought it would be fun to list all of them and provide my opinions of them.
+Unless otherwise specified, all courses here were taken at The University of Michigan (Ann Arbor).
+
+<h2> Electrial Engineering and Computer Science (EECS) </h2>
+<ul>
+  <li>EECS 203 - Discrete Math</li>
+  <li>EECS 280 - Programming and Data Stuctures</li>
+  <li>EECS 281 - Data Stuctures and Algorithms</li>
+  <li>EECS 370 - Introduction to Computer Organization (Architecture)</li>
+  <li>EECS 376 - Foundations of Computer Science</li>
+  <li>EECS 388 - Introduction to Computer Security</li>
+  <li>EECS 475 - Introduction to Cryptography</li>
+  <li>EECS 481 - Software Engineering</li>
+  <li>EECS 482 - Introduction to Operating Systems</li>
+  <li>EECS 483 - Compiler Construction</li>
+  <li>EECS 485 - Web Systems</li>
+  <li>EECS 496/497 - Major Design Project ("Smart Nutrition")</li>
+</ul>
+
+<h2> Economics (ECON) </h2>
+<ul>
+  <li> ECON 101 - Principles of Economics 1 (Micro-econmics) </li>
+  <li> ECON 102 - Principles of Economics 2 (Macro-econmics) </li>
+  <li> ECON 327 - Economics of Crime </li>
+</ul>
+
+<h2> Biology, Genetics, Etc. </h2>
+<ul>
+  <li> CMPLXSYS 425 - Evolution in Silico </li>
+</ul>
+
+</div>
+</body>

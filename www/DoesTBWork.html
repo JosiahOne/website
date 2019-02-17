@@ -1,0 +1,72 @@
+<link rel="stylesheet" type="text/css" href="josiahMinimal.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="Fonts/stylesheet.css" media="screen" />
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+<style>
+
+.line {
+  width: 100%;
+  height: 1px;
+  margin: 5px;
+  background-color: black;
+}
+h1, h2 {
+  text-align: center;
+}
+h1[state='Nope.'] {
+  background-color: red;
+  color: white;
+}
+
+h1[state='Yep.'] {
+  background-color: green;
+  color: white;
+}
+
+.platformType {
+  background-color: yellow;
+  padding: 2px;
+  border: 1px solid lightgray;
+  position: absolute;
+  top: 100%;
+  
+  /* Upcoming Hack */
+  margin-top: -30px;
+}
+
+</style>
+
+<body>
+  
+<h2> Does it build? </h2>
+
+  <h1 id="buildStatus">Nope.</h1>
+  
+  Last known working c-c revision: -
+  <br>
+  Last known working m-c revision: -
+  
+  <div class="line"> </div>
+  
+  <h2> Does it work? </h2>
+
+  <h1 id="workStatus">Nope.</h1>
+  
+    Last known working c-c revision: 67a8eb70e294
+    <br>
+    Last known working m-c revision: 7de522bd9785
+    
+    <div class="platformType">OS X </div>
+
+</body>
+
+<script>
+  if (document.getElementById("buildStatus")) {
+    document.getElementById("buildStatus").setAttribute('state',document.getElementById("buildStatus").textContent);
+  }
+  
+  if (document.getElementById("workStatus")) {
+    document.getElementById("workStatus").setAttribute('state',document.getElementById("workStatus").textContent);
+  }
+</script>
+

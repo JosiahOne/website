@@ -1,0 +1,484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Group Tabs</title>
+
+    </head>
+	<script>
+		page = 1;
+	</script>
+	<script>
+		function appleClick(e) {
+			
+			if (page == 1)
+			{
+				document.getElementById("CnetTab").className = 'cnetTab-move';
+				document.getElementById("CnetLogo").className = 'faviconAppTab';
+				document.getElementById("AppleTab").className = 'appleTab-move';
+				document.getElementById("AppleLogo").className = 'favicon';
+				document.getElementById("DropboxTab").className = 'dropboxTab-show';
+				document.getElementById("dropboxLogo").className = 'faviconAppTab';
+				page = 2;
+			}
+			else if (page == 3)
+			{
+				document.getElementById("CnetTab").className = 'cnetTab-show';
+				document.getElementById("CnetLogo").className = 'faviconAppTab';
+				document.getElementById("DropboxTab").className = 'dropboxTab-collapse';
+				document.getElementById("dropboxLogo").className = 'faviconAppTab';
+				document.getElementById("AppleTab").className = 'appleTab-normalize';
+				document.getElementById("AppleLogo").className = 'favicon';
+				
+				page = 2;
+
+			}
+		}
+		
+		function cnetClick(e) {
+			if (page == 2)
+			{
+				document.getElementById("DropboxTab").className = 'dropboxTab-hide';
+				document.getElementById("AppleTab").className = 'appleTab-move-back';
+				document.getElementById("AppleLogo").className = 'faviconAppTab';
+				document.getElementById("CnetTab").className = 'cnetTab-move-back';
+				document.getElementById("CnetLogo").className = 'favicon';
+
+
+				page = 1;
+			}
+		}
+		
+		function dropboxClick(e) {
+			document.getElementById("CnetTab").className = 'cnetTab-hide';
+			document.getElementById("CnetLogo").className = 'invisibleAppTab';
+			document.getElementById("AppleTab").className = 'appleTab-move-leftmost';
+			document.getElementById("AppleLogo").className = 'faviconAppTab';
+			document.getElementById("DropboxTab").className = 'dropboxTab-expand';
+			document.getElementById("dropboxLogo").className = 'favicon';
+			
+			page = 3;
+		}
+	</script>
+
+            <style>
+        	.titlebar1{
+        		height: 40px;
+        		width: 800px;
+        		background: #A4AEB0;
+        		position: relative;
+        	}
+        	.groupBackground {
+        		height: 30px;
+        		width: 180px;
+        		background: #525758;
+        		bottom: 0%;
+        		left: 4%;
+        		position: absolute;
+        	}
+        	.aTab {
+        		height: 25px;
+        		width: 140px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		left: 5px;
+        		position: absolute;
+        		text-align:left;
+        		line-height: 25px;
+        	}
+        	.smallTab {
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 5px;
+        		position: absolute;
+        		text-align:center;
+        		line-height: 25px;
+        		font-size: 0;
+        	}
+        	    .invisibleTab {
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 5px;
+        		position: absolute;
+        		text-align:center;
+        		line-height: 25px;
+        		font-size: 0;
+        		opacity: 0;
+        	}
+        	
+        	.dropboxTab-show {
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 5px;
+        		position: absolute;
+        		text-align:center;
+        		line-height: 25px;
+        		font-size: 0;
+        		opacity: 1;
+        	}
+        	.dropboxTab-hide {
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 5px;
+        		position: absolute;
+        		text-align:center;
+        		line-height: 25px;
+        		font-size: 0;
+        		opacity: 0;
+        	}
+        	.dropboxTab-expand {
+        		-moz-animation: move6 ease .3s;
+        		-webkit-animation: move6 ease .3s;
+        		animation: move6 ease .3s;
+        		
+        		height: 25px;
+        		width: 140px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 5px;
+        		position: absolute;
+        		text-align:left;
+        		line-height: 25px;
+        		font-size: 12;
+        	}
+        	.dropboxTab-collapse {
+        		-moz-animation: move7 ease .3s;
+        		-webkit-animation: move7 ease .3s;
+        		animation: move7 ease .3s;
+        		
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 5px;
+        		position: absolute;
+        		text-align:left;
+        		line-height: 25px;
+        		font-size: 0;
+        	}
+        	
+        	.favicon {
+        		padding-right: 5px;
+        		padding-top: 2.5px;
+        		padding-left: 2.5px;
+
+        	}
+        	.faviconAppTab {
+        		padding-right: 2.5px;
+        		padding-top: 2.5px;
+        		padding-left: 2.5px;
+        	}
+        	.invisibleAppTab {
+        		padding-right: 2.5px;
+        		padding-top: 2.5px;
+        		padding-left: 2.5px;
+        		opacity: 0%;
+        	}
+        	.cnetTab {
+        		
+        	}
+        	
+        	.cnetTab-hide {
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		left: 5px;
+        		position: absolute;
+        		text-align:center;
+        		line-height: 25px;
+        		font-size: 0;
+        		opacity: 0;
+        	}
+        	
+        	.cnetTab-show {
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		left: 5px;
+        		position: absolute;
+        		text-align:center;
+        		line-height: 25px;
+        		font-size: 0;
+        		opacity: 1;
+        	}
+        	
+        	.cnetTab-move {
+        		-moz-animation: move1 ease .3s;
+        		-webkit-animation: move1 ease .3s;
+        		animation: move1 ease .3s;
+        		
+        		font-size: 0;
+        		width: 25px;
+        		height: 25px;
+        		left: 5px;
+        		bottom: 0%;
+        		background: #CBCDCD;
+        		position: absolute;
+        	}
+        	
+        	.cnetTab-move-back {
+        		-moz-animation: move3 ease .3s;
+        		-webkit-animation: move3 ease .3s;
+        		animation: move3 ease .3s;
+        		
+        		height: 25px;
+        		width: 140px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		left: 5px;
+        		position: absolute;
+        		text-align:left;
+        		line-height: 25px;
+        		font-size: 12;
+        	}
+
+        	.appleTab {
+        		
+        	}
+        	
+        	.appleTab-move {
+        		-moz-animation: move2 ease .3s;
+        		-webkit-animation: move2 ease .3s;
+        		animation: move2 ease .3s;
+        		
+        		height: 25px;
+        		width: 110px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 35px;
+        		position: absolute;
+        		text-align:left;
+        		line-height: 25px;
+        		font-size: 12;
+        	}
+        	
+        	.appleTab-move-leftmost {
+        		-moz-animation: move5 ease .3s;
+        		-webkit-animation: move5 ease .3s;
+        		animation: move5 ease .3s;
+        		
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		left: 5px;
+        		position: absolute;
+        		text-align:left;
+        		line-height: 25px;
+        		font-size: 0;
+        	}
+        	
+        	.appleTab-normalize {
+        		-moz-animation: move8 ease .3s;
+        		-webkit-animation: move8 ease .3s;
+        		animation: move8 ease .3s;
+        		
+        		height: 25px;
+        		width: 110px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 35px;
+        		position: absolute;
+        		text-align:left;
+        		line-height: 25px;
+        		font-size: 12;        		
+        	}
+        	
+        	.appleTab-move-back {
+        		-moz-animation: move4 ease .3s;
+        		-webkit-animation: move4 ease .3s; /* Does not work on Webkit. Why? IDK. */
+        		animation: move4 ease .3s;
+        		
+        		height: 25px;
+        		width: 25px;
+        		background: #CBCDCD;
+        		bottom: 0%;
+        		right: 5px;
+        		position: absolute;
+        		text-align:center;
+        		line-height: 25px;
+        		font-size: 0;
+        	}
+        	
+        	
+@keyframes move1
+{
+0%   {width:140px; height: 25px; left:5px; background: #CBCDCD; bottom: 0%; }
+100% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+@-moz-keyframes move1 /* Firefox */
+{
+0%   {width:140px; height: 25px; left:5px; background: #CBCDCD; bottom: 0%; }
+100% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+@-webkit-keyframes move1
+{
+0%   {width:140px; height: 25px; left:5px; background: #CBCDCD; bottom: 0%; }
+100% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+@keyframes move2
+{
+0%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+@-moz-keyframes move2 /* Firefox */
+{
+0%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+@-webkit-keyframes move2
+{
+0%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+
+
+@keyframes move3
+{
+0% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100%   { font-size: 12; width:140px; height: 25px; left:5px; background: #CBCDCD; bottom: 0%; }
+}
+
+@-moz-keyframes move3 /* Firefox */
+{
+0% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100%   { font-size: 12; width:140px; height: 25px; left:5px; background: #CBCDCD; bottom: 0%; }
+}
+@-webkit-keyframes move3
+{
+0% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100%   { font-size: 12; width:140px; height: 25px; left:5px; background: #CBCDCD; bottom: 0%; }
+}
+
+@keyframes move4
+{
+0% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+}
+
+@-moz-keyframes move4 /* Firefox */
+{
+0% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+}
+
+@-webkit-keyframes move4
+{
+0% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+}
+
+
+
+
+
+@keyframes move5
+{
+0% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+
+}
+
+@-moz-keyframes move5 /* Firefox */
+{
+0% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}}
+
+@-webkit-keyframes move5
+{
+0% {font-size: 12; width: 110px; height: 25px; right:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+
+@keyframes move6
+{
+	0%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 12; width: 140px; height: 25px; right:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+@-moz-keyframes move6
+{
+		0%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 12; width: 140px; height: 25px; right:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+@-webkit-keyframes move6
+{
+		0%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+100% {font-size: 12; width: 140px; height: 25px; right:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+
+@keyframes move7
+{
+	100%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+0% {font-size: 12; width: 140px; height: 25px; right:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+@-moz-keyframes move7
+{
+		100%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+0% {font-size: 12; width: 140px; height: 25px; right:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+@-webkit-keyframes move7
+{
+		100%   {font-size: 0; width:25px; height: 25px; right: 5px; bottom:0%; background:#CBCDCD; position: absolute;}
+0% {font-size: 12; width: 140px; height: 25px; right:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+@keyframes move8
+{
+100% {font-size: 12; width: 110px; height: 25px; left:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+0% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+
+}
+
+@-moz-keyframes move8 /* Firefox */
+{
+100% {font-size: 12; width: 110px; height: 25px; left:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+0% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}}
+
+@-webkit-keyframes move8
+{
+100% {font-size: 12; width: 110px; height: 25px; left:35px; bottom: 0%; background:#CBCDCD; position: absolute;}
+0% {font-size: 0; width: 25px; height: 25px; left:5px; bottom: 0%; background:#CBCDCD; position: absolute;}
+}
+
+
+        </style>
+	<body bgcolor="0066CC" background="https://assets.mozillalabs.com/Websites/Sandstone/Backgrounds/grain.png">
+		<div class="titlebar1">
+			<div class="groupBackground">
+				 <div class="aTab" id="CnetTab" onclick="cnetClick(this)">	 
+					<img src="http://upload.wikimedia.org/wikipedia/en/8/8f/Cnetlogo.png" height="20" width="20" align="left" class="favicon" id="CnetLogo">  Cnet.com
+				 </div>
+
+				 <div class="invisibleTab" id="DropboxTab" onclick="dropboxClick(this)">
+				 	<img src="http://www.blogherald.com/wp-content/uploads/2013/02/Dropbox-Logo.jpeg" height="20" width="20" align="left" class="invisibleAppTab" id="dropboxLogo"> Dropbox.com
+				 </div>
+				 
+				 <div class="smallTab" id="AppleTab" onclick="appleClick(this)">
+					<img src="http://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" height="20" width="20" align="left" class="faviconAppTab" id="AppleLogo"> Apple.com 
+				 </div>
+			</div>
+			
+		</div>
+	</body>
+</html>

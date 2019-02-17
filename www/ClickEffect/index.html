@@ -1,0 +1,196 @@
+<link rel="stylesheet" type="text/css" href="josiahMinimal.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="Fonts/stylesheet.css" media="screen" />
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+<style>
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+  * {
+   max-width: 480px;
+   min-width: 320px;
+  }
+}
+
+@font-face {
+    font-family: 'Andale Mono'; /*a name to be used later*/
+    src: url('http://apps.josiahbruner.com/Fonts/AndaleMono.ttf'); /*URL to font*/
+}
+
+#topbox {
+  font-family: 'Andale Mono';
+  color: white;
+  text-align: center;
+  font-size: 90px;
+  height: 100px;
+  background-color: transparent;
+  margin-top: -8px;
+  cursor: pointer;
+  
+}
+
+#otherbox {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0px;
+  height: 0px;
+  text-align: center;
+  overflow: hidden;
+  transition: color 0.2s ease-in 0s, height 0.3s ease-out 0s, margin-bottom 0.3s ease-out 0s;
+}
+
+#mainheader {
+  margin-left: -8px;
+  margin-right: -8px;
+  background-image: url("../ny.png");
+  background-position: center center;
+}
+
+#mainheader:hover > #otherbox {
+  height: 20px;
+  opacity: 1;
+  margin-bottom: -20px;
+}
+
+body {
+  background: #ecf0f1;
+  font-family: Andale Mono;
+}
+
+.spacer {
+  height: 50px;
+  width: 0px;
+}
+
+.item {
+  height: 70%;
+  width: 50%;
+  margin: auto;
+  background-size: auto 200px;
+  text-align: center;
+  line-height: 200px;
+  font-size: 2em;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.item {
+  background-color: #2980b9;
+}
+
+.blue {
+  background-image: url("../blueCircle.svg");
+}
+
+#resume {
+  background-color: #8e44ad;
+}
+
+.purple {
+  background-image: url("../purpleCircle.svg");
+}
+
+.font {
+  color: black;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.font,
+.overlay {
+  transition: color .2s ease-out, background-color .2s ease-in;
+}
+
+.item:hover {
+  box-shadow: 0px 4px 10px #BDC3C7;
+}
+
+.item:hover > .overlay,
+.item:hover .font {
+  background-color: transparent;
+  color: white !important;
+}
+
+a > span {
+    position:absolute; 
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+
+    /* edit: added z-index */
+    z-index: 1;
+
+    background-image: url('empty.gif');
+
+}
+
+#circle {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 0 0;
+  height: 100%;
+  width: 100%;
+  transition: background-size .4s ease-in;
+}
+
+.item:active #circle {
+  background-size: 3000px 3000px;
+}
+
+.item {
+  position: relative;
+}
+
+</style>
+
+<body>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    
+<div id="mainheader"> 
+<div id="topbox"> J </div>
+<div id="otherbox"> Josiah Bruner. </div>
+</div>
+<div class="spacer"> </div>
+
+<div class="item" id="someElement" onmousedown="itTouched()" onmouseup="itTouched()"> <div id="circle" class="blue"><div class="overlay"> </div>Click Me</div></div>
+<div class="spacer"> </div>
+
+</body>
+
+<script>
+
+document.onmousemove = getMouseXY; 
+var tempX = 0; 
+var tempY = 0; 
+
+function getMouseXY(e) { 
+  tempX = e.clientX + document.body.scrollLeft; 
+  tempY = e.clientY + document.body.scrollTop; 
+}
+
+function itTouched() {
+  var someElement = document.getElementById("someElement")
+  var circle = document.getElementById("circle");
+  
+  var xValue = getPos(someElement).x + (someElement.offsetWidth / 2) - tempX;
+  var yValue = getPos(someElement).y + (someElement.offsetHeight / 2) - tempY;
+  
+  var theString = "background-position: calc(50% - " + xValue + "px)" + " calc(50% - " + yValue + "px);";
+    
+  
+  circle.setAttribute("style", theString);
+}
+
+function getPos(el) {
+    // yay readability
+    for (var lx=0, ly=0;
+         el != null;
+         lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+    return {x: lx,y: ly};
+}
+</script>
+
