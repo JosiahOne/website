@@ -1,7 +1,11 @@
-FROM alpine
+FROM ubuntu 
 
-COPY www/ www/
+# Install python3
+RUN     apt-get update
+RUN     apt-get install -y python3
+
+ADD www/ www/
 
 WORKDIR www/
 
-CMD ["python3", "-m", "http.server"]
+CMD ["/usr/bin/python3", "-m", "http.server"]
