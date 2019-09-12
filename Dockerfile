@@ -4,8 +4,12 @@ FROM ubuntu
 RUN     apt-get update
 RUN     apt-get install -y python3
 
+# Install npm and http-server
+RUN     apt-get install -y npm
+RUN     npm install http-server -g
+
 ADD www/ www/
 
 WORKDIR www/
 
-CMD ["/usr/bin/python3", "-m", "http.server"]
+CMD ["http-server", "-p", "8000"]
