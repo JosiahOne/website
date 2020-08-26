@@ -1,7 +1,7 @@
-FROM ubuntu 
+FROM ubuntu:bionic 
 
 # Install python3
-RUN     apt-get update
+RUN     apt-get update -y
 RUN     apt-get install -y python3
 
 # Install npm and http-server
