@@ -75,7 +75,7 @@
         the vulnerability must not affect you.<br>
         <br><br>
         <img src="narrow_arch.png" style="width:50%;"></img>
-
+        <br>
         Narrow works by combining two processes:
 
         <ul>
@@ -83,10 +83,75 @@
                 It then collects the set of functions modified by the fix.
             </li>
             <li>
-                
+                Control flow analysis: Next, narrow uses a program analysis technique to determine how code execution flows in your target program. 
             </li>
         </ul>
 
+        If narrow ever finds a path from the entrypoint of your program to one of the "possibly relevant" functions, it indicates as such.
+        <h2>Example: CVE-2018-18074 </h2>
+        Let's now see how narrow performs on a real CVE. If we examine the GitHub fix pull request for <a href="https://nvd.nist.gov/vuln/detail/CVE-2018-18074"> CVE-2018-18074</a> we'll see
+        that the fix only changed one function: rebuild_auth.
+        <br><br>
+        As such, it's logical to assume that our program is only vulnerable if we too pass through that function.
+        <br><br>
+        <h3> Vulnerable case </h3>
+        So for example, given the following program: <br>
+        <img src="narrow_vuln_example.png" style="width:50%;"></img>
+        <br>
+
+        We can see that there is a vulnerable code path and this CVE would be relevant. If we run narrow we'll see:
+        <img src="narrow_run_bad.png" style="width:50%;"></img><br>
+        (Notice that rebuild_auth is automatically determined as a vulnerable target)
+
+        And finally, if we examine the output of narrow's "enriched" SBOM, we'll see:
+
+        <img src="narrow_bad_output.png" style="width:50%;"></img><br>
+
+        Narrow correctly determined that this vulnerability *is* likely to affect us. Yay!
+
+        <h3> Not Vulnerable case </h3>
+        Now let's look at a simple program that is obviously not vulnerable.<br>
+        <img src="narrow_not_vuln.png" style="width:50%;"></img>
+        <br>
+
+        If we again run narrow we'll see a different output in our SBOM:<br>
+        <img src="narrow_good_output.png" style="width:50%;"></img><br>
+
+        <h2>Operationalization</h2>
+        To what extent does it help manage the load of reported vulnerabilities? What fraction of vulns might one expect narrow to "remove". What fraction might be "removed" incorrectly?
+        <br><br>
+        To determine this, I ran an experiment on three randomly picked Python-based Github projects. For each project I obtained an SBOM and set of vulnerabilities using pipaudit. I then fed the results to Narrow. The results were astonishing:<br>
+        <img src="narrow_graph.png" style="width:50%;"></img><br>
+
+        Notice the upshot here. Only 1/71 vulnerabilities across these projects were likely to affect the codebase. That means, given a random CVE, you might expect less than 2% to be relevant. <br>
+        (It's also interesting that this number exactly matches semgrep's reported result as of July 2023 where they say: "Semgrep Supply Chain's reachability analysis lets you quickly find and remediate the 2% of issues that are actually reachable.")
+        <br><br>
+        
+        That being said, it's worth noting that I also manually audited a random sample of the 71 vulnerabilities and found that although narrow's precision was ~100%, it's recall was only 20%. <br><br>
+        As such, narrow is likely very useful as a way to prioritize a large number of vulnerabilities efficently. However, it can not with confidence tell you that you aren't vulnerable at all.
+
+        <h2>Reality Check</h2>
+        All software analysis tools have limitations and narrow is no exception. While very promising, narrow has several limitations:
+
+        <ul>
+            <li>Expects single start point -> Libraries not well supported</li>
+            <li>CFG generated statically -> Callbacks and dynamic execution problematic</li>
+            <li>Requires python source -> Compiled dependencies can't be analyzed</li>
+        </ul>
+
+        <h2>Shout Outs</h2>
+
+        Shortly before presenting narrow I came across another SCA tool similiar in approach: <a href="https://github.com/eclipse/steady">Eclise Steady</a>. This tool also provides reachability analysis based on examining patches for Java programs.<br><br>
+        The primary difference is that steady relies on its own vulnerability database (that contains the automated "targets") whereas narrow is purely a client-side tool that uses existing vulnerability databases.
+
+        <h2>Call to Action</h2>
+        We all have an agend. I'll tell you what mine is: 
+
+        <ul>
+            <li>If you build SCA tools: please incorporate reachability techniques. Expect it to be a common expectation of SCA tools at some point</li>
+            <li>If you are involved in vulnerability database standards or working groups: can we make it more common to store “targets” in metadata?</li>
+            <li>If you are a user of SCA tools: ask your vendors!</li>
+        </ul>
 
         <h2> The Talk </h2>
         I was given the amazing opportunity to present narrow at OWASP AppSec Global in Dublin in 2023. If you'd like to watch the video version of this article, take a look below:
