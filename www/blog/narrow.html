@@ -1,0 +1,98 @@
+<link rel="stylesheet" type="text/css" href="../josiahMinimal.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="blog.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../Fonts/stylesheet.css" media="screen" />
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+
+<html>
+  <head>
+
+  </head>
+
+  <body>
+    <div id="mainheader">
+        <a href="../index.html">
+          <div id="topbox"> J </div>
+        </a>
+        <div id="otherbox"> Josiah Bruner. </div>
+    </div>
+
+    <div class="container">
+      <h1> <a href="narrow.html"> Narrow - SCA Reachability Analysis without the Effort </a> </h1>
+
+      <div class="blogMetadata">
+      07/04/2023
+      </div>
+
+      <br>
+
+      <div class="blogPost">
+        <h2>Introduction </h2>
+        In this post I'm going to (finally) write about some really cool research I was fortunate to work on at Cisco: narrow.
+
+        In short, narrow is a software composition analysis tool for python programs that uses program analysis to automatically determine what subset of
+        vulnerable dependencies are most likely to <i>actually</i> affect you, thereby greatly improving the prioritization process.
+        <br><br>
+        If you're interested, the work is completely open source and can be obtained here: <a href="https://github.com/duo-labs/narrow"> https://github.com/duo-labs/narrow</a>
+
+        <h2>Software Composition Analysis </h2>
+        It's 2023 and we have a lot of SCA tools. We hear about it so much, you might be tired of it. However, even given all the hype we're still struggling as an industry to manage it.
+        For example, back when I worked at Cisco we did a couple experiments and found that less than half of reported vulnerabilities in third-party components actually posed any relevant threat to us.
+        This was not really an uncommon finding and many others have reported similar values.
+        <br><br>
+        Why is so much of this irrelevant?
+        <br><br>
+        Answer: Even if all the reported components are correct (i.e., used by your program) that doesn't mean all the *code paths* are used.
+        Example: CVE-2022-21716 only affects your use of Twisted if you're using the SSH features of Twisted. Many users are not.
+        <img src="narrow_cfg.png" style="width:50%;"></img>
+        
+        <h2>Rise of Static Analysis </h2>
+        How are we going to fix this? Answer: program analysis.
+        <br><br>
+        We're increasingly seeing tools that use control flow analysis to improve findings. e.g. <a href="https://semgrep.dev/products/semgrep-supply-chain">Semgrep Supply Chain</a>, 
+        <a href="https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck">govulncheck</a>, among others.
+        However, they have their own issues. They usually require either:
+        
+        <ul>
+            <li>
+                Additional metadata associated with vulnerabilities in databases (the govulncheck case)
+            </li>
+            <li>
+                Manually created rules to indicate "targets" (the semgrep case)
+            </li>
+        </ul>
+         
+        This is problematic because both have scaling challenges to varying degrees. In the former you need to ensure that every vulnerability is supplemented with exploitation information 
+        (most CVEs do not have this) or you need to manually write detection rules (which usually only address high-profile vulnerabilities).
+
+        <h2>Enter: narrow </h2>
+        Narrow addresses these problems by taking a third approach that requires no manual intervention. It is based off the following key insight:<br><br>
+
+        Given a valid fix for some vulnerability,<br>
+        At least one modified function must used in the exploit chain.<br>
+        &#8756;<br>
+        If your program can't reach any of the modified functions,<br>
+        the vulnerability must not affect you.<br>
+        <br><br>
+        <img src="narrow_arch.png" style="width:50%;"></img>
+
+        Narrow works by combining two processes:
+
+        <ul>
+            <li>Patch extraction: Narrow automatically examines NVD, OSV, or other vulnerability databases and follows links to fixes for those vulnerabilities.
+                It then collects the set of functions modified by the fix.
+            </li>
+            <li>
+                
+            </li>
+        </ul>
+
+
+        <h2> The Talk </h2>
+        I was given the amazing opportunity to present narrow at OWASP AppSec Global in Dublin in 2023. If you'd like to watch the video version of this article, take a look below:
+        <br><br>
+        Recording: <a href="https://youtu.be/wdHfPTtG9vQ">YouTube Link</a>
+      </div>
+    </div>
+  </body>
+</html>
