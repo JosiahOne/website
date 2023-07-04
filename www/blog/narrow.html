@@ -128,7 +128,7 @@
         <br><br>
         
         That being said, it's worth noting that I also manually audited a random sample of the 71 vulnerabilities and found that although narrow's precision was ~100%, it's recall was only 20%. <br><br>
-        As such, narrow is likely very useful as a way to prioritize a large number of vulnerabilities efficently. However, it can not with confidence tell you that you aren't vulnerable at all.
+        As such, narrow is likely very useful as a way to prioritize a large number of vulnerabilities efficiently. However, it can not with confidence tell you that you aren't vulnerable at all.
 
         <h2>Reality Check</h2>
         All software analysis tools have limitations and narrow is no exception. While very promising, narrow has several limitations:
@@ -141,11 +141,11 @@
 
         <h2>Shout Outs</h2>
 
-        Shortly before presenting narrow I came across another SCA tool similiar in approach: <a href="https://github.com/eclipse/steady">Eclise Steady</a>. This tool also provides reachability analysis based on examining patches for Java programs.<br><br>
+        Shortly before presenting narrow I came across another SCA tool similar in approach: <a href="https://github.com/eclipse/steady">Eclipse Steady</a>. This tool also provides reachability analysis based on examining patches for Java programs.<br><br>
         The primary difference is that steady relies on its own vulnerability database (that contains the automated "targets") whereas narrow is purely a client-side tool that uses existing vulnerability databases.
 
         <h2>Call to Action</h2>
-        We all have an agend. I'll tell you what mine is: 
+        We all have an agenda. I'll tell you what mine is: 
 
         <ul>
             <li>If you build SCA tools: please incorporate reachability techniques. Expect it to be a common expectation of SCA tools at some point</li>
