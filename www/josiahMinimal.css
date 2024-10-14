@@ -4,6 +4,7 @@
 }
 
 a {
+  color: #006bc2;
   text-decoration: none;
 }
 
@@ -61,4 +62,11 @@ a {
 
 body {
   background: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+      background-color: black;
+      color: white;
+  }
 }
